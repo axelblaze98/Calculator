@@ -15,7 +15,7 @@
 
                 <tr>
                         <td><input class="allclearButton" type="button" value="CE" id ="bCE" onclick="clar()"></td>
-                        <td><input class="button" type="button" value="C"id ="bC"></td>
+                        <td><input class="button" type="button" value="C"id ="bC" onclick="C()"></td>
                         <td><input class="button" type="button" value="/" id ="b/" onclick="calcInput('/')"></td>
                         <td><input class="button" type="button" value="*" id ="b*" onclick="calcInput('*')"></td>
                 </tr>
@@ -52,17 +52,23 @@
   <script>
           let s =""
           function calcInput(str){
+                if(s=="0"){
+                        s=""
+                }
                 s=s+str;
-                console.log(str)
                 document.getElementById("screen").value=`${s}`;
           }
           function calc(){
                 let ans = eval(s)
-                s = ans
+                s = ans.toString()
                 document.getElementById("screen").value=`${s}`;
           }
           function clar(){
                 s = "0"
+                document.getElementById("screen").value=`${s}`;
+          }
+          function C (){
+                s = s.slice(0,s.length-1)
                 document.getElementById("screen").value=`${s}`;
           }
   </script>
